@@ -30,16 +30,16 @@ def get_data(sheetnum, sheetrow, sheetcol):
     # 科目名
     class_name = sheet.cell(row = sheetrow, column = sheetcol).value
     class_name_list = class_name.splitlines()
-    ## 汎用コンピテンス
+    ## 汎用コンピテンス(General Competence)
     class_g1 = sheet.cell(row = sheetrow, column = sheetcol+8).value
     class_g2 = sheet.cell(row = sheetrow, column = sheetcol+9).value
     class_g3 = sheet.cell(row = sheetrow, column = sheetcol+10).value
     class_g4 = sheet.cell(row = sheetrow, column = sheetcol+11).value
     class_g5 = sheet.cell(row = sheetrow, column = sheetcol+12).value
-    ## 専門コンピテンス
-    class_s1 = sheet.cell(row = sheetrow, column = sheetcol+13).value
-    class_s2 = sheet.cell(row = sheetrow, column = sheetcol+14).value
-    class_s3 = sheet.cell(row = sheetrow, column = sheetcol+15).value
+    ## 専門コンピテンス(Professional Competence)
+    class_p1 = sheet.cell(row = sheetrow, column = sheetcol+13).value
+    class_p2 = sheet.cell(row = sheetrow, column = sheetcol+14).value
+    class_p3 = sheet.cell(row = sheetrow, column = sheetcol+15).value
 
 
     class_g1_list = class_g1.splitlines()
@@ -48,12 +48,12 @@ def get_data(sheetnum, sheetrow, sheetcol):
     class_g4_list = class_g4.splitlines()
     class_g5_list = class_g5.splitlines()
     
-    class_s1_list = class_s1.splitlines()
-    class_s2_list = class_s2.splitlines()
-    class_s3_list = class_s3.splitlines()
+    class_p1_list = class_p1.splitlines()
+    class_p2_list = class_p2.splitlines()
+    class_p3_list = class_p3.splitlines()
 
     for i in range(len(class_name_list)):
-        data_dict[class_name_list[i]] = cl.OrderedDict({"g1": class_g1_list[i],"g2": class_g2_list[i],"g3": class_g3_list[i],"g4": class_g4_list[i],"g5": class_g5_list[i],"s1": class_s1_list[i],"s2": class_s2_list[i],"s3": class_s3_list[i]})
+        data_dict[class_name_list[i]] = cl.OrderedDict({"g1": class_g1_list[i],"g2": class_g2_list[i],"g3": class_g3_list[i],"g4": class_g4_list[i],"g5": class_g5_list[i],"p1": class_p1_list[i],"p2": class_p2_list[i],"p3": class_p3_list[i]})
 
 # データの取り出し
 
