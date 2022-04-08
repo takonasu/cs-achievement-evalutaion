@@ -1,0 +1,22 @@
+{
+  "name": "search-class-number",
+  "version": "1.0.0",
+  "description": "- 理工情報生命学術院学術院共通専門基盤科目\r - 研究群共通科目\r     - 専門基礎科目\r         - リスク・レジリエンス工学関連科目\r         - 情報理工学関連科目\r     - 専門科目\r         - リスク・レジリエンス工学関連科目\r         - 情報理工学関連科目\r         - 知能機能システム関連科目\r         - 構造エネルギー工学関連科目\r - 学位プログラム科目群\r     - 情報理工学関連科目\r         - 専門基礎科目，専門科目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ooshun/cs-achievement-evalutaion.git"
+  },
+  "author": "takonasu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ooshun/cs-achievement-evalutaion/issues"
+  },
+  "homepage": "https://github.com/ooshun/cs-achievement-evalutaion#readme",
+  "dependencies": {
+    "csv-parse": "^5.0.4"
+  }
+}
