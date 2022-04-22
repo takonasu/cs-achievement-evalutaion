@@ -1,21 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import { render } from '@testing-library/react';
+import * as React from 'react';
 import './App.css';
+import { FileSelect } from './FileSelect';
+import { readFileAsText, mapCSVToArray, ClassInfo } from './Misc';
+// import { mapArrayToWorkItem } from './WorkItem'
+import { Result } from './Result'
 
-function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
+class App extends React.Component
+{
+	state = { screen: 'init', items: [] };
+
+	handleSubmit = async (file: Blob) =>
+	{
+		try
+		{
+			const csv = await readFileAsText(file);
+			const items = mapCSVToArray(csv);
+			this.setState({ screen: 'result', items });
+		} catch (error)
+		{
+			alert(error);
+		}
+	};
+
+	public render()
+	{
+		return (
+			<div className="App">
+				<header className="App-header">
+					<h1 className='App-title'>CS達成度評価チェッカー</h1>
+				</header>
+				{this.state.screen === 'init' ? (
+					<FileSelect onSubmit={this.handleSubmit} />
+				) : (
+					<Result items={this.state.items} />
+				)}
+			</div>
+		);
+	}
 }
-
 export default App;
