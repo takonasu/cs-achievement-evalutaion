@@ -7,7 +7,7 @@ sheet1 = load_book['Page 1']
 sheet2 = load_book['Page 2']
 sheet3 = load_book['Page 3']
 sheet4 = load_book['Page 4']
-json_path = 'data\\point.json'
+json_path = '../data/point.json'
 
 
 # 辞書作成
@@ -53,7 +53,7 @@ def get_data(sheetnum, sheetrow, sheetcol):
     class_p3_list = class_p3.splitlines()
 
     for i in range(len(class_name_list)):
-        data_dict[class_name_list[i]] = cl.OrderedDict({"g1": class_g1_list[i],"g2": class_g2_list[i],"g3": class_g3_list[i],"g4": class_g4_list[i],"g5": class_g5_list[i],"p1": class_p1_list[i],"p2": class_p2_list[i],"p3": class_p3_list[i]})
+        data_dict[class_name_list[i]] = cl.OrderedDict({"g1": int(class_g1_list[i]),"g2": int(class_g2_list[i]),"g3": int(class_g3_list[i]),"g4": int(class_g4_list[i]),"g5": int(class_g5_list[i]),"p1": int(class_p1_list[i]),"p2": int(class_p2_list[i]),"p3": int(class_p3_list[i])})
 
 # データの取り出し
 
