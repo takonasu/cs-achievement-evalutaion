@@ -30,6 +30,27 @@ export const Result = (props: Props) => {
 		}
 	});
 
+	const viewDetail = registerdCourses.map((registerdCourse) => {
+		const classID = registerdCourse.classID.replace(/"/g, '');
+		if (achievementScores[classID]) {
+			return (
+				<tr>
+					<td>{registerdCourse.className} </td>
+					<td>{achievementScores[classID].g1}</td>
+					<td>{achievementScores[classID].g2}</td>
+					<td>{achievementScores[classID].g3}</td>
+					<td>{achievementScores[classID].g4}</td>
+					<td>{achievementScores[classID].g5}</td>
+					<td>{achievementScores[classID].p1}</td>
+					<td>{achievementScores[classID].p2}</td>
+					<td>{achievementScores[classID].p3}</td>
+				</tr>
+			);
+		} else {
+			return <></>;
+		}
+	});
+
 	return (
 		<div className="Result">
 			<h4>コンピテンシ</h4>
@@ -41,6 +62,7 @@ export const Result = (props: Props) => {
 						<th colSpan={3}>専門コンピテンス</th>
 					</tr>
 					<tr>
+						<th>授業名</th>
 						<th>1.知の活用力</th>
 						<th>2.マネジメント能力</th>
 						<th>3.コミュニケーション能力</th>
@@ -52,18 +74,18 @@ export const Result = (props: Props) => {
 					</tr>
 				</thead>
 				<tbody>
-					{
-						<tr>
-							<td>{result[0]}</td>
-							<td>{result[1]}</td>
-							<td>{result[2]}</td>
-							<td>{result[3]}</td>
-							<td>{result[4]}</td>
-							<td>{result[5]}</td>
-							<td>{result[6]}</td>
-							<td>{result[7]}</td>
-						</tr>
-					}
+					{viewDetail}
+					<tr>
+						<td>合計</td>
+						<td>{result[0]}</td>
+						<td>{result[1]}</td>
+						<td>{result[2]}</td>
+						<td>{result[3]}</td>
+						<td>{result[4]}</td>
+						<td>{result[5]}</td>
+						<td>{result[6]}</td>
+						<td>{result[7]}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
