@@ -4,31 +4,26 @@ import './App.css';
 import { FileSelect } from './FileSelect';
 import { readFileAsText, mapCSVToArray, ClassInfo } from './Misc';
 // import { mapArrayToWorkItem } from './WorkItem'
-import { Result } from './Result'
+import { Result } from './Result';
 
-class App extends React.Component
-{
+class App extends React.Component {
 	state = { screen: 'init', items: [] };
 
-	handleSubmit = async (file: Blob) =>
-	{
-		try
-		{
+	handleSubmit = async (file: Blob) => {
+		try {
 			const csv = await readFileAsText(file);
 			const items = mapCSVToArray(csv);
 			this.setState({ screen: 'result', items });
-		} catch (error)
-		{
+		} catch (error) {
 			alert(error);
 		}
 	};
 
-	public render()
-	{
+	public render() {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<h1 className='App-title'>CS達成度評価チェッカー</h1>
+					<h1 className="App-title">CS達成度評価チェッカー</h1>
 				</header>
 				{this.state.screen === 'init' ? (
 					<FileSelect onSubmit={this.handleSubmit} />

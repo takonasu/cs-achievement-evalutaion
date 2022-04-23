@@ -1,22 +1,19 @@
 import * as React from 'react';
 import { ClassInfo } from './Misc';
-import './Result.css'
-import Data from './data.json'
+import './Result.css';
+import Data from './data.json';
 
-interface Props
-{
-    items: ClassInfo[];
+interface Props {
+	items: ClassInfo[];
 }
 
-export const Result = (props: Props) =>
-{
-    // 結果を保存する用の配列と初期化
-    var result: number[] = new Array(8);
-    result.fill(0);
+export const Result = (props: Props) => {
+	// 結果を保存する用の配列と初期化
+	var result: number[] = new Array(8);
+	result.fill(0);
 
-
-    //data.jsonからimportしたのがパースできないので埋め込み
-    const json = `{
+	//data.jsonからimportしたのがパースできないので埋め込み
+	const json = `{
   "0AH0201": {
     "g1": 30,
     "g2": 20,
@@ -1414,73 +1411,69 @@ export const Result = (props: Props) =>
     "p3": 15,
     "name": "情報理工前期特別演習f"
   }
-}`
+}`;
 
-    var data = JSON.parse(json);
+	var data = JSON.parse(json);
 
-    // console.log(data);
-    for (var i = 0; i < props.items.length; i++)
-    {
-        var flag = 0;
-        for (var obj in data)
-        {
-            if (obj === props.items[i].classID.replace(/\"/g, ''))
-            {
-                result[0] += data[obj].g1;
-                result[1] += data[obj].g2;
-                result[2] += data[obj].g3;
-                result[3] += data[obj].g4;
-                result[4] += data[obj].g5;
-                result[5] += data[obj].p1;
-                result[6] += data[obj].p2;
-                result[7] += data[obj].p3;
-                flag = 1;
-                break;
-            }
-        }
-        if (flag === 0)//見つからなかったとき
-        {
-            alert(props.items[i].className + " not found!!");
-        }
-    }
+	// console.log(data);
+	for (var i = 0; i < props.items.length; i++) {
+		var flag = 0;
+		for (var obj in data) {
+			if (obj === props.items[i].classID.replace(/\"/g, '')) {
+				result[0] += data[obj].g1;
+				result[1] += data[obj].g2;
+				result[2] += data[obj].g3;
+				result[3] += data[obj].g4;
+				result[4] += data[obj].g5;
+				result[5] += data[obj].p1;
+				result[6] += data[obj].p2;
+				result[7] += data[obj].p3;
+				flag = 1;
+				break;
+			}
+		}
+		if (flag === 0) {
+			//見つからなかったとき
+			alert(props.items[i].className + ' not found!!');
+		}
+	}
 
-
-    return (
-        <div className='Result'>
-            <h4>
-                コンピテンシ
-            </h4>
-            {/* <p>緑色が超過しているポイント，赤色が不足しているポイント．</p> */}
-            <table>
-                <thead>
-                    <tr>
-                        <th colSpan={5}>汎用コンピテンス</th>
-                        <th colSpan={3}>専門コンピテンス</th>
-                    </tr>
-                    <tr>
-                        <th>1.知の活用力</th>
-                        <th>2.マネジメント能力</th>
-                        <th>3.コミュニケーション能力</th>
-                        <th>4.チームワーク力</th>
-                        <th>5.国際性</th>
-                        <th>1.研究力</th>
-                        <th>2.専門知識</th>
-                        <th>3.倫理観</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {<tr>
-                        <td>{result[0]}</td>
-                        <td>{result[1]}</td>
-                        <td>{result[2]}</td>
-                        <td>{result[3]}</td>
-                        <td>{result[4]}</td>
-                        <td>{result[5]}</td>
-                        <td>{result[6]}</td>
-                        <td>{result[7]}</td>
-                    </tr>}
-                </tbody>
-            </table>
-        </div>
-    );
+	return (
+		<div className="Result">
+			<h4>コンピテンシ</h4>
+			{/* <p>緑色が超過しているポイント，赤色が不足しているポイント．</p> */}
+			<table>
+				<thead>
+					<tr>
+						<th colSpan={5}>汎用コンピテンス</th>
+						<th colSpan={3}>専門コンピテンス</th>
+					</tr>
+					<tr>
+						<th>1.知の活用力</th>
+						<th>2.マネジメント能力</th>
+						<th>3.コミュニケーション能力</th>
+						<th>4.チームワーク力</th>
+						<th>5.国際性</th>
+						<th>1.研究力</th>
+						<th>2.専門知識</th>
+						<th>3.倫理観</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						<tr>
+							<td>{result[0]}</td>
+							<td>{result[1]}</td>
+							<td>{result[2]}</td>
+							<td>{result[3]}</td>
+							<td>{result[4]}</td>
+							<td>{result[5]}</td>
+							<td>{result[6]}</td>
+							<td>{result[7]}</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	);
 };
