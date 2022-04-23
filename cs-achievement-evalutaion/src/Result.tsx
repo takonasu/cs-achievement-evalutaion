@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ClassInfo } from './Misc';
 import './Result.css';
-import Data from './data.json';
+import Data from './point.json';
 
 interface Props {
 	items: ClassInfo[];
@@ -9,7 +9,7 @@ interface Props {
 
 export const Result = (props: Props) => {
 	// 結果を保存する用の配列と初期化
-	var result: number[] = new Array(8);
+	const result: number[] = new Array(8);
 	result.fill(0);
 
 	//data.jsonからimportしたのがパースできないので埋め込み
@@ -1413,30 +1413,24 @@ export const Result = (props: Props) => {
   }
 }`;
 
-	var data = JSON.parse(json);
+	const achievementScores = JSON.parse(json);
 
-	// console.log(data);
-	for (var i = 0; i < props.items.length; i++) {
-		var flag = 0;
-		for (var obj in data) {
-			if (obj === props.items[i].classID.replace(/\"/g, '')) {
-				result[0] += data[obj].g1;
-				result[1] += data[obj].g2;
-				result[2] += data[obj].g3;
-				result[3] += data[obj].g4;
-				result[4] += data[obj].g5;
-				result[5] += data[obj].p1;
-				result[6] += data[obj].p2;
-				result[7] += data[obj].p3;
-				flag = 1;
-				break;
-			}
-		}
-		if (flag === 0) {
-			//見つからなかったとき
-			alert(props.items[i].className + ' not found!!');
-		}
-	}
+  const registerdCourses = props.items;
+  registerdCourses.forEach(registerdCourse =>{
+    const classID = registerdCourse.classID.replace(/"/g, '');
+    if(achievementScores[classID]){
+      result[0] += achievementScores[classID].g1;
+      result[1] += achievementScores[classID].g2;
+      result[2] += achievementScores[classID].g3;
+      result[3] += achievementScores[classID].g4;
+      result[4] += achievementScores[classID].g5;
+      result[5] += achievementScores[classID].p1;
+      result[6] += achievementScores[classID].p2;
+      result[7] += achievementScores[classID].p3;
+    }else{
+      alert(`${registerdCourse.className} is not found!`)
+    }
+  })
 
 	return (
 		<div className="Result">
