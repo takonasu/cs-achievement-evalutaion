@@ -11,17 +11,22 @@ const parsedKdBData = Object.fromEntries(
   ])
 );
 
-const csPoint = JSON.parse(fs.readFileSync("../data/point.json", "utf8"));
-const csPointResult = Object.fromEntries(
-  Object.keys(csPoint).map((className) => {
-    if (parsedKdBData[className]) {
-      csPoint[className]["name"] = className;
-      return [parsedKdBData[className], csPoint[className]];
+const competencyList = JSON.parse(
+  fs.readFileSync("./data/competency.json", "utf8")
+);
+
+const result = Object.fromEntries(
+  competencyList.map((classInfo) => {
+    if (parsedKdBData[classInfo["名前"]]) {
+      return [parsedKdBData[classInfo["名前"]], classInfo];
     } else {
-      console.error(`${className} is undefined`);
+      console.error(`${classInfo["名前"]} is undefined`);
       return [];
     }
   })
 );
 
-fs.writeFileSync("./data/output.json", JSON.stringify(csPointResult, null, 2));
+fs.writeFileSync(
+  "./data/achievementScores.json",
+  JSON.stringify(result, null, 2)
+);
