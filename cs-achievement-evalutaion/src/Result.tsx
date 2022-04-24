@@ -17,14 +17,14 @@ export const Result = (props: Props) => {
 	registerdCourses.forEach((registerdCourse) => {
 		const classID = registerdCourse.classID.replace(/"/g, '');
 		if (achievementScores[classID]) {
-			result[0] += achievementScores[classID].g1;
-			result[1] += achievementScores[classID].g2;
-			result[2] += achievementScores[classID].g3;
-			result[3] += achievementScores[classID].g4;
-			result[4] += achievementScores[classID].g5;
-			result[5] += achievementScores[classID].p1;
-			result[6] += achievementScores[classID].p2;
-			result[7] += achievementScores[classID].p3;
+			result[0] += achievementScores[classID]['知の活用力'];
+			result[1] += achievementScores[classID]['マネジメント能力'];
+			result[2] += achievementScores[classID]['コミュニケーション能力'];
+			result[3] += achievementScores[classID]['チームワーク力'];
+			result[4] += achievementScores[classID]['国際性'];
+			result[5] += achievementScores[classID]['研究力'];
+			result[6] += achievementScores[classID]['専門知識'];
+			result[7] += achievementScores[classID]['倫理観'];
 		} else {
 			alert(`${registerdCourse.className} is not found!`);
 		}
@@ -36,14 +36,14 @@ export const Result = (props: Props) => {
 			return (
 				<tr>
 					<td>{registerdCourse.className} </td>
-					<td>{achievementScores[classID].g1}</td>
-					<td>{achievementScores[classID].g2}</td>
-					<td>{achievementScores[classID].g3}</td>
-					<td>{achievementScores[classID].g4}</td>
-					<td>{achievementScores[classID].g5}</td>
-					<td>{achievementScores[classID].p1}</td>
-					<td>{achievementScores[classID].p2}</td>
-					<td>{achievementScores[classID].p3}</td>
+					<td>{achievementScores[classID]['知の活用力']}</td>
+					<td>{achievementScores[classID]['マネジメント能力']}</td>
+					<td>{achievementScores[classID]['コミュニケーション能力']}</td>
+					<td>{achievementScores[classID]['チームワーク力']}</td>
+					<td>{achievementScores[classID]['国際性']}</td>
+					<td>{achievementScores[classID]['研究力']}</td>
+					<td>{achievementScores[classID]['専門知識']}</td>
+					<td>{achievementScores[classID]['倫理観']}</td>
 				</tr>
 			);
 		} else {
