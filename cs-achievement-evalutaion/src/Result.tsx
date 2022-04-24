@@ -10,7 +10,7 @@ interface Props {
 
 export const Result = (props: Props) => {
 	// 結果を保存する用の配列と初期化
-	const result: number[] = new Array(8);
+	const result: number[] = new Array(9);
 	result.fill(0);
 
 	const registerdCourses = props.items;
@@ -25,6 +25,7 @@ export const Result = (props: Props) => {
 			result[5] += achievementScores[classID]['研究力'];
 			result[6] += achievementScores[classID]['専門知識'];
 			result[7] += achievementScores[classID]['倫理観'];
+			result[8] += achievementScores[classID]['単位数'];
 		} else {
 			alert(`${registerdCourse.className} is not found!`);
 		}
@@ -44,6 +45,7 @@ export const Result = (props: Props) => {
 					<td>{achievementScores[classID]['研究力']}</td>
 					<td>{achievementScores[classID]['専門知識']}</td>
 					<td>{achievementScores[classID]['倫理観']}</td>
+					<td>{achievementScores[classID]['単位数']}</td>
 				</tr>
 			);
 		} else {
@@ -71,6 +73,7 @@ export const Result = (props: Props) => {
 						<th>1.研究力</th>
 						<th>2.専門知識</th>
 						<th>3.倫理観</th>
+						<th>単位数</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -85,6 +88,7 @@ export const Result = (props: Props) => {
 						<td>{result[5]}</td>
 						<td>{result[6]}</td>
 						<td>{result[7]}</td>
+						<td>{result[8]}</td>
 					</tr>
 				</tbody>
 			</table>
