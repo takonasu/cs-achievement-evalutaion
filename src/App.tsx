@@ -5,6 +5,7 @@ import { FileSelect } from './components/FileSelect';
 import { readFileAsText, mapCSVToArray, ClassInfo } from './utils/Misc';
 // import { mapArrayToWorkItem } from './WorkItem'
 import { Result } from './components/Result';
+import { TopBar } from './components/TopBar';
 
 class App extends React.Component {
 	state = { screen: 'init', items: [] };
@@ -22,9 +23,7 @@ class App extends React.Component {
 	public render() {
 		return (
 			<div className="App">
-				<header className="App-header">
-					<h1 className="App-title">CS達成度評価チェッカー</h1>
-				</header>
+				<TopBar>システム情報工学研究群 授業達成度評価チェッカー</TopBar>
 				{this.state.screen === 'init' ? (
 					<FileSelect onSubmit={this.handleSubmit} />
 				) : (

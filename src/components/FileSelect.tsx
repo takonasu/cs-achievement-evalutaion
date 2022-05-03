@@ -1,4 +1,7 @@
 import * as React from 'react';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 interface Props {
 	onSubmit: (file: Blob) => void;
@@ -16,11 +19,15 @@ export class FileSelect extends React.Component<Props> {
 
 	render() {
 		return (
-			<div>
-				<p className="App-inport">CSVファイルを選択してください．</p>
-				<input type="file" className="file" ref={(file: HTMLInputElement) => (this.file = file)} accept="text/csv" />
-				<button onClick={this.handleShowReport}>実行</button>
-			</div>
+			<Card sx={{ minWidth: 275 }}>
+				<CardContent>
+					<Typography variant="h6" component="div">
+						CSVファイルを選択してください
+					</Typography>
+					<input type="file" className="file" ref={(file: HTMLInputElement) => (this.file = file)} accept="text/csv" />
+					<button onClick={this.handleShowReport}>実行</button>
+				</CardContent>
+			</Card>
 		);
 	}
 }
