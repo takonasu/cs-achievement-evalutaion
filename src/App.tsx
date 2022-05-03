@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import './App.css';
-import { FileSelect } from './FileSelect';
-import { readFileAsText, mapCSVToArray, ClassInfo } from './Misc';
+import { FileSelect } from './components/FileSelect';
+import { readFileAsText, mapCSVToArray, ClassInfo } from './utils/Misc';
 // import { mapArrayToWorkItem } from './WorkItem'
-import { Result } from './Result';
+import { Result } from './components/Result';
 
 class App extends React.Component {
 	state = { screen: 'init', items: [] };

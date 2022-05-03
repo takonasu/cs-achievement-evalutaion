@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ClassInfo } from './Misc';
+import { ClassInfo } from '../utils/Misc';
 import './Result.css';
 
-const achievementScores = require('./achievementScores.json');
+const achievementScores = require('../data/achievementScores.json');
 
 interface Props {
 	items: ClassInfo[];
