@@ -43,6 +43,19 @@ export const Result = (props: Props) => {
 					<RequiredCompetency registerdCourses={props.items} competencySums={competencySums!} />
 				</CardContent>
 			</Card>
+			<Card sx={{ minWidth: 275 }}>
+				<CardContent>
+					<Typography variant="h6" component="div">
+						注意
+					</Typography>
+					<p>
+						授業のコンピテンシの過不足のみ表示しています。このほかにTOEICやINFOSSによる達成度ポイントが追加されます。
+						<br />
+						他学位プログラムの方は、<a href="https://twitter.com/ITF_tako">@ITF_tako</a>
+						までに修了に必須なコンピテンシを教えてください。対応します。
+					</p>
+				</CardContent>
+			</Card>
 		</div>
 	);
 };
