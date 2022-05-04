@@ -13,14 +13,16 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import { Competency } from '../../type';
 
 const evaluationCriteria = require('../../data/evaluationCriteria.json');
 
 type Props = {
 	registerdCourses: ClassInfo[];
+	competencySums: Competency;
 };
 
-export const RequiredCompetency: FC<Props> = ({ registerdCourses }) => {
+export const RequiredCompetency: FC<Props> = ({ registerdCourses, competencySums }) => {
 	const [degree, setDegree] = React.useState(Object.keys(evaluationCriteria)[0]);
 
 	return (
@@ -47,6 +49,7 @@ export const RequiredCompetency: FC<Props> = ({ registerdCourses }) => {
 				<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
 					<TableHead>
 						<TableRow>
+							<TableCell align="center"></TableCell>
 							<TableCell align="center">知の活用力</TableCell>
 							<TableCell align="center">マネジメント能力</TableCell>
 							<TableCell align="center">コミュニケーション能力</TableCell>
@@ -60,6 +63,7 @@ export const RequiredCompetency: FC<Props> = ({ registerdCourses }) => {
 					</TableHead>
 					<TableBody>
 						<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+							<TableCell align="center">必要コンピテンシ</TableCell>
 							<TableCell align="center">{evaluationCriteria[degree]['知の活用力']}</TableCell>
 							<TableCell align="center">{evaluationCriteria[degree]['マネジメント能力']}</TableCell>
 							<TableCell align="center">{evaluationCriteria[degree]['コミュニケーション能力']}</TableCell>
@@ -69,6 +73,18 @@ export const RequiredCompetency: FC<Props> = ({ registerdCourses }) => {
 							<TableCell align="center">{evaluationCriteria[degree]['専門知識']}</TableCell>
 							<TableCell align="center">{evaluationCriteria[degree]['倫理観']}</TableCell>
 							<TableCell align="center">{evaluationCriteria[degree]['単位数']}</TableCell>
+						</TableRow>
+						<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+							<TableCell align="center">授業取得コンピテンシ</TableCell>
+							<TableCell align="center">{competencySums['知の活用力']}</TableCell>
+							<TableCell align="center">{competencySums['マネジメント能力']}</TableCell>
+							<TableCell align="center">{competencySums['コミュニケーション能力']}</TableCell>
+							<TableCell align="center">{competencySums['チームワーク力']}</TableCell>
+							<TableCell align="center">{competencySums['国際性']}</TableCell>
+							<TableCell align="center">{competencySums['研究力']}</TableCell>
+							<TableCell align="center">{competencySums['専門知識']}</TableCell>
+							<TableCell align="center">{competencySums['倫理観']}</TableCell>
+							<TableCell align="center">{competencySums['単位数']}</TableCell>
 						</TableRow>
 					</TableBody>
 				</Table>
