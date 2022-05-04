@@ -46,5 +46,6 @@
   },
   "devDependencies": {
     "prettier": "^2.6.2"
-  }
+  },
+  "homepage": "/competency_checker"
 }
