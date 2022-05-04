@@ -55,7 +55,7 @@ export const CompetencyTable: FC<Props> = ({ registerdCourses, setCompetencySums
 		if (achievementScores[classID]) {
 			return (
 				<TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-					<TableCell>{registerdCourse.className} </TableCell>
+					<TableCell>{registerdCourse.className.replace(/"/g, '')} </TableCell>
 					<TableCell align="center">{achievementScores[classID]['知の活用力']}</TableCell>
 					<TableCell align="center">{achievementScores[classID]['マネジメント能力']}</TableCell>
 					<TableCell align="center">{achievementScores[classID]['コミュニケーション能力']}</TableCell>

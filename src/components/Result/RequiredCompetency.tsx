@@ -25,6 +25,18 @@ type Props = {
 export const RequiredCompetency: FC<Props> = ({ registerdCourses, competencySums }) => {
 	const [degree, setDegree] = React.useState(Object.keys(evaluationCriteria)[0]);
 
+	const showResultTypography = (acquired: number, required: number) => {
+		return acquired - required > 0 ? (
+			<TableCell style={{ backgroundColor: 'rgba(46,160,67,0.35)' }} align="center">
+				<Typography>{acquired - required}</Typography>
+			</TableCell>
+		) : (
+			<TableCell style={{ backgroundColor: 'rgba(248,81,73,0.35)' }} align="center">
+				<Typography>{acquired - required}</Typography>
+			</TableCell>
+		);
+	};
+
 	return (
 		<>
 			<FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
@@ -85,6 +97,21 @@ export const RequiredCompetency: FC<Props> = ({ registerdCourses, competencySums
 							<TableCell align="center">{competencySums['専門知識']}</TableCell>
 							<TableCell align="center">{competencySums['倫理観']}</TableCell>
 							<TableCell align="center">{competencySums['単位数']}</TableCell>
+						</TableRow>
+						<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+							<TableCell align="center">過不足</TableCell>
+							{showResultTypography(competencySums['知の活用力'], evaluationCriteria[degree]['知の活用力'])}
+							{showResultTypography(competencySums['マネジメント能力'], evaluationCriteria[degree]['マネジメント能力'])}
+							{showResultTypography(
+								competencySums['コミュニケーション能力'],
+								evaluationCriteria[degree]['コミュニケーション能力']
+							)}
+							{showResultTypography(competencySums['チームワーク力'], evaluationCriteria[degree]['チームワーク力'])}
+							{showResultTypography(competencySums['国際性'], evaluationCriteria[degree]['国際性'])}
+							{showResultTypography(competencySums['研究力'], evaluationCriteria[degree]['研究力'])}
+							{showResultTypography(competencySums['専門知識'], evaluationCriteria[degree]['専門知識'])}
+							{showResultTypography(competencySums['倫理観'], evaluationCriteria[degree]['倫理観'])}
+							{showResultTypography(competencySums['単位数'], evaluationCriteria[degree]['単位数'])}
 						</TableRow>
 					</TableBody>
 				</Table>
