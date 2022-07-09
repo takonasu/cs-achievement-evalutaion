@@ -1,36 +1,22 @@
-import { render } from '@testing-library/react';
-import * as React from 'react';
+import React from 'react';
+
+import logo from './logo.svg';
 import './App.css';
-import { FileSelect } from './components/FileSelect';
-import { readFileAsText, mapCSVToArray, ClassInfo } from './utils/Misc';
-// import { mapArrayToWorkItem } from './WorkItem'
-import { Result } from './components/Result';
-import { TopBar } from './components/TopBar';
 
-class App extends React.Component {
-	state = { screen: 'init', items: [] };
-
-	handleSubmit = async (file: Blob) => {
-		try {
-			const csv = await readFileAsText(file);
-			const items = mapCSVToArray(csv);
-			this.setState({ screen: 'result', items });
-		} catch (error) {
-			alert(error);
-		}
-	};
-
-	public render() {
-		return (
-			<div className="App">
-				<TopBar>システム情報工学研究群 授業達成度評価チェッカー</TopBar>
-				{this.state.screen === 'init' ? (
-					<FileSelect onSubmit={this.handleSubmit} />
-				) : (
-					<Result items={this.state.items} />
-				)}
-			</div>
-		);
-	}
+function App() {
+	return (
+		<div className="App">
+			<header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+				<p>
+					Edit <code>src/App.tsx</code> and save to reload.
+				</p>
+				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+					Learn React
+				</a>
+			</header>
+		</div>
+	);
 }
+
 export default App;

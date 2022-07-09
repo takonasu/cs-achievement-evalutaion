@@ -1,0 +1,47 @@
+{
+	"extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+		"prettier"
+	],
+	"plugins": [
+		"import",
+		"unused-imports"
+	],
+	"parser": "@typescript-eslint/parser",
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [
+					".ts"
+				]
+			}
+		},
+        "react": {
+            "version": "detect" // React version. "detect" automatically picks the version you have installed.
+        }
+	},
+	"rules": {
+		"unused-imports/no-unused-imports": "warn",
+		"sort-imports": 0,
+		"import/order": [
+			2,
+			{
+				"groups": [
+					"builtin",
+					"external",
+					"parent",
+					"sibling",
+					"index",
+					"object",
+					"type"
+				],
+				"alphabetize": {
+					"order": "asc"
+				},
+				"newlines-between": "always"
+			}
+		]
+	}
+}
