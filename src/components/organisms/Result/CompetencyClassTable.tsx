@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 import { FC } from 'react';
 import * as React from 'react';
 
@@ -47,7 +48,7 @@ export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetenc
 	registerdCourses.forEach((registerdCourse) => {
 		const classID = registerdCourse.classID.replace(/"/g, '');
 		if (
-			!isOnlyGotTani ||
+			(!isOnlyGotTani && registerdCourse.classGrade !== 'D') ||
 			(isOnlyGotTani && registerdCourse.classGrade !== '履修中' && registerdCourse.classGrade !== 'D')
 		) {
 			if (isJsonProperty(classID)) {
@@ -71,7 +72,7 @@ export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetenc
 	const viewDetail = registerdCourses.map((registerdCourse, index) => {
 		const classID = registerdCourse.classID.replace(/"/g, '');
 		if (
-			!isOnlyGotTani ||
+			(!isOnlyGotTani && registerdCourse.classGrade !== 'D') ||
 			(isOnlyGotTani && registerdCourse.classGrade !== '履修中' && registerdCourse.classGrade !== 'D')
 		) {
 			if (isJsonProperty(classID)) {
@@ -113,7 +114,7 @@ export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetenc
 					<FormControlLabel value="true" control={<Radio />} label="取得済み単位のみ" />
 				</RadioGroup>
 			</FormControl>
-
+			<Typography component="div">評価がDのものは計算対象外になります。</Typography>
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
 					<TableHead>
