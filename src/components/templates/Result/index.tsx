@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Result = (props: Props) => {
-	const [competencySums, setCompetencySums] = useState<Competency>({
+	const [competencyClassSums, setCompetencyClassSums] = useState<Competency>({
 		知の活用力: 0,
 		マネジメント能力: 0,
 		コミュニケーション能力: 0,
@@ -25,7 +25,7 @@ export const Result = (props: Props) => {
 		倫理観: 0,
 		単位数: 0
 	});
-	console.log(competencySums);
+
 	return (
 		<div className="Result">
 			<Card sx={{ minWidth: 275 }}>
@@ -33,7 +33,10 @@ export const Result = (props: Props) => {
 					<Typography variant="h6" component="div">
 						コンピテンシ一覧
 					</Typography>
-					<CompetencyClassTable registerdCourses={props.items} setCompetencySums={(sums) => setCompetencySums(sums)} />
+					<CompetencyClassTable
+						registerdCourses={props.items}
+						setCompetencyClassSums={(sums) => setCompetencyClassSums(sums)}
+					/>
 				</CardContent>
 			</Card>
 			<Card sx={{ minWidth: 275 }}>
@@ -41,7 +44,7 @@ export const Result = (props: Props) => {
 					<Typography variant="h6" component="div">
 						必要コンピテンシと過不足一覧
 					</Typography>
-					<RequiredCompetency competencySums={competencySums} />
+					<RequiredCompetency competencyClassSums={competencyClassSums} />
 				</CardContent>
 			</Card>
 			<Card sx={{ minWidth: 275 }}>
@@ -49,11 +52,16 @@ export const Result = (props: Props) => {
 					<Typography variant="h6" component="div">
 						注意
 					</Typography>
+					<p>あくまでも目安としてお使いください。</p>
 					<p>
-						授業のコンピテンシの過不足のみ表示しています。このほかにTOEICやINFOSSによる達成度ポイントが追加されます。
+						筆頭論文（査読有り論文誌，査読有り国際会議かつ発表，それ以外の論文もしくは発表） [600, 400, 200]
 						<br />
-						他学位プログラムの方は、<a href="https://twitter.com/ITF_tako">@ITF_tako</a>
-						までに修了に必須なコンピテンシを教えてください。対応します。
+						非筆頭共著論文（査読有り論文誌，査読有り国際会議かつ発表，それ以外の論文もしくは発表） [150,100,50] <br />
+						特許 (Patent) 300*貢献率
+						<br /> 研究室WG 最大300 <br />
+						CSスペシャルワークショップ 最大500
+						<br /> 学位プログラム外活動 最大300 <br />
+						TA コマ数*4
 					</p>
 				</CardContent>
 			</Card>

@@ -16,8 +16,6 @@ function App() {
 		setCsvImported(true);
 	};
 
-	console.log(csvItems);
-
 	return (
 		<div className="App">
 			<TopBar>情報理工学位P 達成度評価チェッカー</TopBar>

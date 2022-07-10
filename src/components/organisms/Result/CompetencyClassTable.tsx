@@ -20,16 +20,16 @@ import { ClassInfo } from '../../../utils/Misc';
 
 type Props = {
 	registerdCourses: ClassInfo[];
-	setCompetencySums: (elm: Competency) => void;
+	setCompetencyClassSums: (elm: Competency) => void;
 };
 
 type achievementScoresKey = keyof typeof achievementScores;
 
-export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetencySums }) => {
+export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetencyClassSums }) => {
 	// true: 取得済み単位のみ, false: 未取得単位を含む
 	const [isOnlyGotTani, setIsOnlyGotTani] = React.useState(false);
 	// 結果を保存する用の配列と初期化
-	const competencySums: Competency = {
+	const competencyClassSums: Competency = {
 		知の活用力: 0,
 		マネジメント能力: 0,
 		コミュニケーション能力: 0,
@@ -52,22 +52,22 @@ export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetenc
 			(isOnlyGotTani && registerdCourse.classGrade !== '履修中' && registerdCourse.classGrade !== 'D')
 		) {
 			if (isJsonProperty(classID)) {
-				competencySums['知の活用力'] += achievementScores[classID]['知の活用力'];
-				competencySums['マネジメント能力'] += achievementScores[classID]['マネジメント能力'];
-				competencySums['コミュニケーション能力'] += achievementScores[classID]['コミュニケーション能力'];
-				competencySums['チームワーク力'] += achievementScores[classID]['チームワーク力'];
-				competencySums['国際性'] += achievementScores[classID]['国際性'];
-				competencySums['研究力'] += achievementScores[classID]['研究力'];
-				competencySums['専門知識'] += achievementScores[classID]['専門知識'];
-				competencySums['倫理観'] += achievementScores[classID]['倫理観'];
-				competencySums['単位数'] += achievementScores[classID]['単位数'];
+				competencyClassSums['知の活用力'] += achievementScores[classID]['知の活用力'];
+				competencyClassSums['マネジメント能力'] += achievementScores[classID]['マネジメント能力'];
+				competencyClassSums['コミュニケーション能力'] += achievementScores[classID]['コミュニケーション能力'];
+				competencyClassSums['チームワーク力'] += achievementScores[classID]['チームワーク力'];
+				competencyClassSums['国際性'] += achievementScores[classID]['国際性'];
+				competencyClassSums['研究力'] += achievementScores[classID]['研究力'];
+				competencyClassSums['専門知識'] += achievementScores[classID]['専門知識'];
+				competencyClassSums['倫理観'] += achievementScores[classID]['倫理観'];
+				competencyClassSums['単位数'] += achievementScores[classID]['単位数'];
 			} else {
 				alert(`${registerdCourse.className} is not found!`);
 			}
 		}
 	});
 
-	React.useEffect(() => setCompetencySums(competencySums), [isOnlyGotTani]);
+	React.useEffect(() => setCompetencyClassSums(competencyClassSums), [isOnlyGotTani]);
 
 	const viewDetail = registerdCourses.map((registerdCourse, index) => {
 		const classID = registerdCourse.classID.replace(/"/g, '');
@@ -135,15 +135,15 @@ export const CompetencyClassTable: FC<Props> = ({ registerdCourses, setCompetenc
 						{viewDetail}
 						<TableRow>
 							<TableCell>合計</TableCell>
-							<TableCell align="center">{competencySums['知の活用力']}</TableCell>
-							<TableCell align="center">{competencySums['マネジメント能力']}</TableCell>
-							<TableCell align="center">{competencySums['コミュニケーション能力']}</TableCell>
-							<TableCell align="center">{competencySums['チームワーク力']}</TableCell>
-							<TableCell align="center">{competencySums['国際性']}</TableCell>
-							<TableCell align="center">{competencySums['研究力']}</TableCell>
-							<TableCell align="center">{competencySums['専門知識']}</TableCell>
-							<TableCell align="center">{competencySums['倫理観']}</TableCell>
-							<TableCell align="center">{competencySums['単位数']}</TableCell>
+							<TableCell align="center">{competencyClassSums['知の活用力']}</TableCell>
+							<TableCell align="center">{competencyClassSums['マネジメント能力']}</TableCell>
+							<TableCell align="center">{competencyClassSums['コミュニケーション能力']}</TableCell>
+							<TableCell align="center">{competencyClassSums['チームワーク力']}</TableCell>
+							<TableCell align="center">{competencyClassSums['国際性']}</TableCell>
+							<TableCell align="center">{competencyClassSums['研究力']}</TableCell>
+							<TableCell align="center">{competencyClassSums['専門知識']}</TableCell>
+							<TableCell align="center">{competencyClassSums['倫理観']}</TableCell>
+							<TableCell align="center">{competencyClassSums['単位数']}</TableCell>
 						</TableRow>
 					</TableBody>
 				</Table>
