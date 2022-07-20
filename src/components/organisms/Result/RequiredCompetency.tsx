@@ -107,7 +107,7 @@ export const RequiredCompetency: FC<Props> = ({ competencyClassSums }) => {
 	const competencySum = calcCompetencySum(fixedCompetencyList);
 
 	const showResultTypography = (acquired: number, required: number) => {
-		return acquired - required > 0 ? (
+		return acquired - required >= 0 ? (
 			<TableCell style={{ backgroundColor: 'rgba(46,160,67,0.35)' }} align="center">
 				<Typography>{acquired - required}</Typography>
 			</TableCell>
@@ -251,24 +251,24 @@ export const RequiredCompetency: FC<Props> = ({ competencyClassSums }) => {
 						</TableRow>
 						<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 							<TableCell align="center">過不足</TableCell>
-							{showResultTypography(competencyClassSums['知の活用力'], evaluationCriteria['情報理工']['知の活用力'])}
+							{showResultTypography(competencySum['知の活用力'], evaluationCriteria['情報理工']['知の活用力'])}
 							{showResultTypography(
-								competencyClassSums['マネジメント能力'],
+								competencySum['マネジメント能力'],
 								evaluationCriteria['情報理工']['マネジメント能力']
 							)}
 							{showResultTypography(
-								competencyClassSums['コミュニケーション能力'],
+								competencySum['コミュニケーション能力'],
 								evaluationCriteria['情報理工']['コミュニケーション能力']
 							)}
 							{showResultTypography(
-								competencyClassSums['チームワーク力'],
+								competencySum['チームワーク力'],
 								evaluationCriteria['情報理工']['チームワーク力']
 							)}
 							{showResultTypography(finalInternationalityPoint, evaluationCriteria['情報理工']['国際性'])}
-							{showResultTypography(competencyClassSums['研究力'], evaluationCriteria['情報理工']['研究力'])}
-							{showResultTypography(competencyClassSums['専門知識'], evaluationCriteria['情報理工']['専門知識'])}
-							{showResultTypography(competencyClassSums['倫理観'], evaluationCriteria['情報理工']['倫理観'])}
-							{showResultTypography(competencyClassSums['単位数'], evaluationCriteria['情報理工']['単位数'])}
+							{showResultTypography(competencySum['研究力'], evaluationCriteria['情報理工']['研究力'])}
+							{showResultTypography(competencySum['専門知識'], evaluationCriteria['情報理工']['専門知識'])}
+							{showResultTypography(competencySum['倫理観'], evaluationCriteria['情報理工']['倫理観'])}
+							{showResultTypography(competencySum['単位数'], evaluationCriteria['情報理工']['単位数'])}
 						</TableRow>
 					</TableBody>
 				</Table>
