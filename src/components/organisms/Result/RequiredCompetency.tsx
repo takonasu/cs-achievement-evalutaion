@@ -260,10 +260,7 @@ export const RequiredCompetency: FC<Props> = ({ competencyClassSums }) => {
 								competencySum['コミュニケーション能力'],
 								evaluationCriteria['情報理工']['コミュニケーション能力']
 							)}
-							{showResultTypography(
-								competencySum['チームワーク力'],
-								evaluationCriteria['情報理工']['チームワーク力']
-							)}
+							{showResultTypography(competencySum['チームワーク力'], evaluationCriteria['情報理工']['チームワーク力'])}
 							{showResultTypography(finalInternationalityPoint, evaluationCriteria['情報理工']['国際性'])}
 							{showResultTypography(competencySum['研究力'], evaluationCriteria['情報理工']['研究力'])}
 							{showResultTypography(competencySum['専門知識'], evaluationCriteria['情報理工']['専門知識'])}
